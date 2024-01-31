@@ -21,7 +21,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCourses({ activePage, perPage }));
+    if (courses?.length == 0 || currentPage != activePage) {
+      dispatch(fetchCourses({ activePage, perPage }));
+    }
   }, [activePage]);
 
   return (
