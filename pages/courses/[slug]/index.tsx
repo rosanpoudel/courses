@@ -42,10 +42,9 @@ const CourseDetails = () => {
           <div>
             <div>
               <img
-                className="w-full object-cover rounded-t-lg"
+                className="w-full object-cover rounded-t-lg h-96"
                 src={pageDetails?.coverImage}
                 alt={pageDetails?.title}
-                style={{ height: 600 }}
               />
             </div>
           </div>

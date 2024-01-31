@@ -7,10 +7,10 @@ const CourseLoading: React.FC<CourseLoadingProps> = ({ perPage }) => {
   return (
     <>
       {[...Array(perPage)]?.map((p: number) => (
-        <div className="p-5 bg-white  rounded-lg shadow-lg dark:bg-gray-800 hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer">
-          <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
+        <div className="p-5 bg-white  rounded-lg shadow-lg  hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer">
+          <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded ">
             <svg
-              className="w-10 h-10 text-gray-200 dark:text-gray-600"
+              className="w-10 h-10 text-gray-200 "
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -20,10 +20,10 @@ const CourseLoading: React.FC<CourseLoadingProps> = ({ perPage }) => {
               <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
             </svg>
           </div>
-          <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4"></div>
-          <div className="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-          <div className="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-          <div className="h-3.5 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+          <div className="h-6 bg-gray-200 rounded-full  w-60 mb-4"></div>
+          <div className="h-3.5 bg-gray-200 rounded-full  mb-2.5"></div>
+          <div className="h-3.5 bg-gray-200 rounded-full  mb-2.5"></div>
+          <div className="h-3.5 bg-gray-200 rounded-full "></div>
         </div>
       ))}
     </>

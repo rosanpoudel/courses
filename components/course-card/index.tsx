@@ -25,7 +25,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
   return (
     <Link href={`/courses/${slug}`}>
       <div
-        className="fadeFromTopAnimation course-card bg-white  rounded-lg shadow-lg dark:bg-gray-800 hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer "
+        className="fadeFromTopAnimation course-card bg-white  rounded-lg shadow-lg  hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer "
         key={id}
       >
         <div>
