@@ -12,7 +12,7 @@ const CourseDetails = () => {
 
   const slug = query?.slug;
 
-  const [pageDetails, setPageDetails] = useState<CourseTypes>({});
+  const [pageDetails, setPageDetails] = useState<CourseTypes | any>({});
 
   const { courses, currentPage, pageSize, status, totalItems, totalPages } =
     useSelector((state: any) => state.coursesData);

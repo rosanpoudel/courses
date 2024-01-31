@@ -11,7 +11,7 @@ export default async function handler(
       `https://test-api.softversetech.com/courses/?page=${activePage}&pageSize=${perPage}`
     );
 
-    if (!response.ok) {
+    if (!response?.ok) {
       res
         .status(500)
         .json({ error: "Failed to fetch data from the external API" });
