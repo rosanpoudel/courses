@@ -3,15 +3,13 @@ import { CourseTypes } from "../../types/course.types";
 import { AiOutlineEye } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
 import Link from "next/link";
+import { removeHtmlTags } from "../../utils/helpers";
 
 interface CourseCardProps {
   data: CourseTypes;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
-  function removeHtmlTags(str: string) {
-    return str?.replace(/<[^>]*>?/gm, "");
-  }
   const {
     id,
     title,

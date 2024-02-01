@@ -5,6 +5,7 @@ import { CourseTypes } from "../../../types/course.types";
 import { AiOutlineEye } from "react-icons/ai";
 import Link from "next/link";
 import Head from "next/head";
+import { removeHtmlTags } from "../../../utils/helpers";
 
 const CourseDetails = () => {
   const router = useRouter();
@@ -25,10 +26,6 @@ const CourseDetails = () => {
       setPageDetails(course);
     }
   }, [slug]);
-
-  function removeHtmlTags(str: string) {
-    return str?.replace(/<[^>]*>?/gm, "");
-  }
 
   return (
     <div>
