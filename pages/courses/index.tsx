@@ -9,6 +9,7 @@ import { CourseTypes } from "../../types/course.types";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [activePage, setActivePage] = useState<number | string>(1);
   const [perPage, setPerPage] = useState<number>(12);
@@ -18,13 +19,23 @@ const Home = () => {
 
   const handlePaginationClick = (page: number) => {
     setActivePage(page);
+    router.push(`/courses?page=${page}`);
   };
 
   useEffect(() => {
-    if (courses?.length == 0 || currentPage != activePage) {
-      dispatch(fetchCourses({ activePage, perPage }));
+    const queryPage = Number(router.query.page);
+
+    if (!isNaN(queryPage)) {
+      setActivePage(queryPage);
+
+      if (queryPage !== currentPage) {
+        dispatch(fetchCourses({ activePage: queryPage, perPage }));
+      }
+    } else {
+      dispatch(fetchCourses({ activePage: 1, perPage }));
+      setActivePage(1);
     }
-  }, [activePage]);
+  }, [router.query.page]);
 
   return (
     <div>
@@ -64,10 +75,11 @@ const Home = () => {
         )}
 
         {/* pagination */}
-        {status != "loading" && status != "failed" && status == "success" && (
+        {status == "success" && (
           <ul className="flex justify-center gap-1 text-xs font-medium">
             {[...Array(totalPages)]?.map((_, i: number) => (
               <li
+                key={i}
                 onClick={() => handlePaginationClick(i + 1)}
                 className={`block h-8 w-8 rounded border border-gray-100  text-center leading-8 text-gray-900 cursor-pointer ${
                   activePage == i + 1

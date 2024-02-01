@@ -18,6 +18,8 @@ const CourseDetails = () => {
   const { courses, currentPage, pageSize, status, totalItems, totalPages } =
     useSelector((state: any) => state.coursesData);
 
+  console.log("page details:", pageDetails);
+
   useEffect(() => {
     if (slug) {
       const course = courses?.find(
@@ -75,7 +77,7 @@ const CourseDetails = () => {
                 </div>
               </div>
 
-              <Link className="" href="/courses">
+              <Link className="" href={`/courses?page=${currentPage}`}>
                 <button className="w-48 bg-blue-500 text-white text-lg  py-1 px-4 rounded">
                   Back to courses
                 </button>
