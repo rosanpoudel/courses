@@ -1,14 +1,18 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { createWrapper } from "next-redux-wrapper";
+import { combineReducers, configureStore, Reducer } from "@reduxjs/toolkit";
+import { createWrapper, MakeStore } from "next-redux-wrapper";
+import { ReduxAction, RootState } from "../types/store.types";
 import coursesSlice from "./coursesSlice";
 
+// Combine reducers
 const combinedReducer = combineReducers({ coursesData: coursesSlice });
 
-const masterReducer = (state: any, { type, payload }: any) => {
-  return combinedReducer(state, { type, payload });
+// Define the master reducer
+const masterReducer: Reducer<RootState, ReduxAction<any>> = (state, action) => {
+  return combinedReducer(state, action);
 };
 
-export const makeStore = () =>
+// Create the store
+export const makeStore: MakeStore<RootState | any> = () =>
   configureStore({
     reducer: masterReducer,
   });
