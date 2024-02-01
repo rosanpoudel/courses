@@ -21,11 +21,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ data }) => {
     viewsCount,
   } = data;
   return (
-    <Link href={`/courses/${slug}`}>
-      <div
-        className="fadeFromTopAnimation course-card bg-white  rounded-lg shadow-lg  hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer "
-        key={id}
-      >
+    <Link href={`/courses/${slug}`} key={id}>
+      <div className="fadeFromTopAnimation course-card bg-white  rounded-lg shadow-lg  hover:shadow-2xl transition ease-in-out hover:transition-all cursor-pointer ">
         <div>
           <img
             className="card-image h-44 w-full object-cover rounded-t-lg"

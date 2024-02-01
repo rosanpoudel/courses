@@ -6,7 +6,7 @@ const Home = () => {
 
   useEffect(() => {
     // Redirect to the /courses route
-    router.push("/courses");
+    router.push("/courses?page=1");
   }, [router]);
 
   // Render nothing on the Home page, as the redirection will happen immediately

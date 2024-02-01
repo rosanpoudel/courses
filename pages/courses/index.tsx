@@ -11,7 +11,9 @@ const Home = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [activePage, setActivePage] = useState<number | string>(1);
+  const [activePage, setActivePage] = useState<number | string>(
+    Number(router?.query?.page)
+  );
   const [perPage, setPerPage] = useState<number>(12);
 
   const { courses, currentPage, pageSize, status, totalItems, totalPages } =
@@ -27,13 +29,13 @@ const Home = () => {
 
     if (!isNaN(queryPage)) {
       setActivePage(queryPage);
-
       if (queryPage !== currentPage) {
         dispatch(fetchCourses({ activePage: queryPage, perPage }));
       }
-    } else {
-      dispatch(fetchCourses({ activePage: 1, perPage }));
-      setActivePage(1);
+    }
+
+    if (router.asPath == "/courses") {
+      router.push("/courses?page=1");
     }
   }, [router.query.page]);
 
@@ -46,7 +48,7 @@ const Home = () => {
       </Head>
 
       <main className="container my-12 mx-auto">
-        {status == "loading" ? (
+        {status == "loading" && activePage !== currentPage ? (
           <div className="grid w-full gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mb-16">
             <CourseLoading perPage={perPage} />
           </div>
